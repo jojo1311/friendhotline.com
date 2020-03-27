@@ -42,6 +42,7 @@ class SendFn(Protocol):
         pass
 
 
+# TODO NZ: remove Chatroom
 class Chatroom:
     def __init__(self):
         self._users = {}
