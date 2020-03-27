@@ -81,7 +81,8 @@ def rent():
 
     number = hotline.telephony.lowlevel.rent_number(
         country_code=country,
-        sms_callback_url=flask.url_for("telephony.inbound_sms", _external=True),
+        # TODO NZ: revisit sms_callback_url parameter
+        # sms_callback_url=flask.url_for("telephony.inbound_sms", _external=True),
     )
     number_record = models.Number()
     number_record.number = number["msisdn"]
