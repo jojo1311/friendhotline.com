@@ -132,7 +132,7 @@ def server_error(e):
     return flask.render_template("500.html")
 
 
-@app.cli.command()
+@app.cli.command("reset-database")
 def reset_database():
     from hotline.database.create_tables import create_tables
 
