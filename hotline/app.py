@@ -132,7 +132,7 @@ def server_error(e):
     return flask.render_template("500.html")
 
 
-@app.cli.command("reset-database")
+@app.cli.command()
 def reset_database():
     from hotline.database.create_tables import create_tables
 
@@ -154,6 +154,7 @@ def manual_add_number(number, country, features, sms_callback_url):
         number_entry = models.Number()
         number_entry.number = hotline.telephony.lowlevel.normalize_e164_number(number)
         number_entry.country = country
+        # TODO NZ remove?
         number_entry.features = features
         number_entry.save()
 
