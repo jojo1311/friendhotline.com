@@ -1,7 +1,7 @@
 from hotline.database import models as db
 
 
-def create_event():
+def create_event(create_primary_number=True):
     number = db.Number()
     number.number = "5678"
     number.country = "US"
@@ -12,14 +12,18 @@ def create_event():
     event.name = "Test event"
     event.slug = "test"
     event.owner_user_id = "abc123"
-    event.primary_number = number.number
-    event.primary_number_id = number
+
+    if create_primary_number:
+        event.primary_number = number.number
+        event.primary_number_id = number
+
     event.save()
 
     return event
 
 
-# TODO NZ, rename method to member (single)
+# TODO NZ: rename method to member (single)
+# TODO NZ: fix verified spelled wrong
 def add_unverfied_members(event):
     member = db.EventMember()
     member.name = "Unverified Judy"
